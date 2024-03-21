@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="TaskTags" alias="TaskTags" created="2024-03-19T12:45:21" modified="2024-03-19T12:45:40" x="20" y="110" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Task" parentTableSchema="dbo" parentTableName="Tasks" x="235" y="20">
+      <foreignKeyColumn columnName="TaskId" parentColumnName="Id" />
+    </foreignKey>
+    <foreignKey id="Tag" parentTableSchema="dbo" parentTableName="Tags" x="235" y="227">
+      <foreignKeyColumn columnName="TagId" parentColumnName="Id" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="TaskId" fieldName="TaskID" label="Task Id" aliasColumnName="Description" aliasForeignKey="Task" />
+    <column name="Description" fieldName="TaskDescription" label="Task Description" foreignKey="Task" />
+    <column name="TagId" fieldName="TagID" label="Tag Id" aliasColumnName="Name" aliasForeignKey="Tag" />
+    <column name="Name" fieldName="TagName" label="Tag Name" foreignKey="Tag" />
+  </columns>
+</dataModel>

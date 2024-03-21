@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Tags" alias="Tags" created="2024-03-19T12:45:21" modified="2024-03-19T12:46:11" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="Id" fieldName="ID" label="Id" />
+    <column name="Name" fieldName="Name" label="Name" sortType="Ascending" sortOrder="1" />
+  </columns>
+</dataModel>

@@ -1,0 +1,46 @@
+﻿<!-- 
+  This file is provided to store the settings for your Data Aquarium project. 
+  You can safely delete this file if no further code generation is planned.
+-->
+<project compatibility="20111118" dataModel="required" appFolder="app" displayName="TaskManager" group="" type="Web Site Factory" sourceControl="git" subscriptionLevel="Enterprise" name="TaskManager" prettyName="Task Manager" appGenVersion="8.9.39.0" codeDomProvider="CSharp" targetFramework="4.7.2" userInterface="TouchUI" pageImplementation="html" databaseChanged="true" xmlns="urn:schemas-codeontime-com:data-aquarium-project">
+  <connectionString hostDatabaseSharing="false" sessionStateMode="None">Data Source=localhost;Initial Catalog=CotToDoApp;Persist Security Info=True;User ID=sa;Password=QWEasd123!;</connectionString>
+  <providerName>System.Data.SqlClient</providerName>
+  <namespace>FreeTrial</namespace>
+  <webServer run="true" port="39261" preview="Browser" client="">
+    <webConfig></webConfig>
+  </webServer>
+  <features useSaveAndNew="true" pageHeader="Task Manager" copyright="" annotations="false" annotationsPath="" newColumn="true" floating="false" maxGridFields="100" multiSelect="false" batchEdit="false" advancedSearch="false" advancedLookup="false" relationshipExplorer="false" enablePermalinks="false" enableHistory="false" enableTransactions="false" showModalForms="true" tabViewSelection="0">
+    <navigation detectUnderscoreSeparatedSchema="" />
+    <blob allowUploadOnInsert="true" />
+    <framework scriptOnly="true" useExtenders="false" />
+    <grid actionColumn="false" />
+    <touch desktopDisplayDensity="Condensed" mobileDisplayDensity="Auto" transitions="" sidebar="Landscape" labelsInList="DisplayedBelow" initialListMode="SeeAll" menu="toolbar" promoteActions="true" smartDates="true" mapApiIdentifier="" mapApiIdentifierMobile="" />
+    <cms searchEngine="" analysisEngine="" analysisOnDataPages="false" />
+    <ease urlHashing="false">
+      <auditing></auditing>
+    </ease>
+    <packageProperties></packageProperties>
+    <smtp deliveryMethod="Network" deliveryFormat="" from="" clientDomain="" targetName="" host="" port="" defaultCredentials="true" enableSsl="false" username="" password="" />
+    <addons OfflineSync="" ContentHub="" />
+  </features>
+  <reports enabled="true" version="15" />
+  <host path="" url="" />
+  <databaseObjectFilter generate="ControllersAndPages"></databaseObjectFilter>
+  <bll normalizeModelNames="true" discoveryDepth="3" labelFormatExpression="" selectMethod="Select" selectSingleMethod="SelectSingle" insertMethod="Insert" updateMethod="Update" deleteMethod="Delete" generateSharedBusinessRules="false" includeViews="true" tabViewSelection="0">
+    <fieldMap></fieldMap>
+    <keys></keys>
+    <fieldsToIgnore></fieldsToIgnore>
+    <fieldsToHide></fieldsToHide>
+    <customLabels></customLabels>
+  </bll>
+  <membership enabled="true" providerName="System.Data.SqlClient" connectionString="" windowsAuthentication="false" activeDirectory="false" customSecurity="false" dedicatedLogin="false" displayRememberMe="true" rememberMeSet="false" displaySignUp="true" displayPasswordRecovery="true" displayMyAccount="true" displayHelp="true" idleUserDetectionTimeout="-1" tabViewSelection="0" validationKey="AA7E96D222AB95A6B058D5ED5E359D6D990D24313DDB74C4CCD255D5967B539AE3137D329FBAEBCCB6792B5EF3F02A9377A7EC57631D97881DE2C496617A4871">
+    <adConfig></adConfig>
+    <config></config>
+  </membership>
+  <globalization uiCulture="en-US" culture="en-150" enableClientBasedCulture="false" supportedCultures="en-150,en-US; " googleTranslateApiKey="" />
+  <layout name="Classic" menuStyle="MultiLevel" />
+  <theme name="Aquarium" />
+  <publish mode="Azure">
+    <azure external="false">{"webConfigCustomizations":{"production":{"ConnectionStrings":{"FreeTrial":"Server=tcp:cot.database.windows.net,1433;Initial Catalog=CotToDoApp;Persist Security Info=False;User ID=leo;Password=QWEasd123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"},"AppSettings":{"BlobStorageKey":"Y1+fl3fm620ZoTsP3D9qIJ7+RYsJ6+3JfVQlk8YVFjNTKZ6KMmPHkDdKR0fo++2rGgyU4EYAoH4I+AStiUkm2g==","AttachmentsAttachmentBlobAdapter":"Storage-System: Azure; Account: cotstorage; Container: attachments; Path-Template: {ID}-{FileName};"}},"private":{}},"TenantID":"3b874200-be52-4025-a4f5-fccb43c2abd7","ClientID":"0e6b973c-e994-4223-a16c-ca84ab0c4dcc","ClientSecret":"D-P8Q~G3li12vcixSOT2hFOa.02M8Xow-kSYha8e","AccessToken":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlhSdmtvOFA3QTNVYVdTblU3Yk05blQwTWpoQSIsImtpZCI6IlhSdmtvOFA3QTNVYVdTblU3Yk05blQwTWpoQSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNiODc0MjAwLWJlNTItNDAyNS1hNGY1LWZjY2I0M2MyYWJkNy8iLCJpYXQiOjE3MTEwNDY0NjMsIm5iZiI6MTcxMTA0NjQ2MywiZXhwIjoxNzExMDUxNjY4LCJhY3IiOiIxIiwiYWlvIjoiQVlRQWUvOFdBQUFBdkdRMUsxLy85NUpBZVQrZW91TmMzdFRMWDF1ZDFHaWdtdWZTcGI0YmxFeUQ2Uk82bXlSQUhZYXZoN0s0clVjZUFGcTlWSmRvMTdPS0FaRUhmY0dBSzhwaXNBQ2tDZU9MUU04TjlPRGZ4SUk5b3BTMnRKUTFsSGNQWjFLL0NxOW1EeDdFN04rdllMcEtMSnJybzgvVm9mbm9WUGp4OXJBTFpxVWpST0tqUlRnPSIsImFsdHNlY2lkIjoiMTpsaXZlLmNvbTowMDAzMDAwMDREQUE1QjI3IiwiYW1yIjpbInB3ZCIsIm1mYSJdLCJhcHBpZCI6IjBlNmI5NzNjLWU5OTQtNDIyMy1hMTZjLWNhODRhYjBjNGRjYyIsImFwcGlkYWNyIjoiMSIsImVtYWlsIjoibGVvY3VsamFrLmRldkBvdXRsb29rLmNvbSIsImZhbWlseV9uYW1lIjoiQ3VsamFrIiwiZ2l2ZW5fbmFtZSI6IkxlbyIsImlkcCI6ImxpdmUuY29tIiwiaWR0eXAiOiJ1c2VyIiwiaXBhZGRyIjoiMTc4LjIzNi44Ni41OCIsIm5hbWUiOiJMZW8gxIx1bGphayIsIm9pZCI6ImM1ZTA1MzY3LWJmNDEtNDQ0ZS05N2E2LTljMGIzMzFiMDU3MCIsInB1aWQiOiIxMDAzMjAwMUZBQ0U5RDNBIiwicmgiOiIwLkFXQUFBRUtITzFLLUpVQ2s5ZnpMUThLcjEwWklmM2tBdXRkUHVrUGF3ZmoyTUJOaEFCMC4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiI1QXRSTUFfQlV2a0dnREVPWGJ6NFl1VUQtZUFwZjdfMnM2VWRVUkdtVS1BIiwidGlkIjoiM2I4NzQyMDAtYmU1Mi00MDI1LWE0ZjUtZmNjYjQzYzJhYmQ3IiwidW5pcXVlX25hbWUiOiJsaXZlLmNvbSNsZW9jdWxqYWsuZGV2QG91dGxvb2suY29tIiwidXRpIjoieXlfbXdHRXdoRS1ObF9YWVpwdG1BQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19lZG92Ijp0cnVlLCJ4bXNfdGNkdCI6MTUzMTQ3MjM1N30.I9zURojc9Yw7R0zd48sTyY0nFjFbSir8sDw2v0yP55fScs-f7urRQFUWHG5X9JpXRXX3naZisgtNJ91lTwRAR0AVQbCDYKorDxyZ41_7ReKhNx8b8H0cbNaSsivnM2ZEOumZ136SsbqCAZkwMd9ILWJJx5MHFM0wqdj54UdHx5gdGDE781K7Y7eUVeLl97D4va3aGLALnz2r2Nhn3cHqz3S1_YljFxJ1-SmLTnSbeo0E9zGyZOqbeXDTgpyhjl9tKJFdaHwQ1jcDLUKnhAI981UGZDTBFZ0S2K-kN4QsVjuIlLjtEpH-rUoCGy7wCGnIDjzTG9CQP2gLOfgcDzkaGg","RefreshToken":"0.AWAAAEKHO1K-JUCk9fzLQ8Kr1zyXaw6U6SNCoWzKhKsMTcxhAB0.AgABAAEAAADnfolhJpSnRYB1SVj-Hgd8AgDs_wUA9P_YLLCHNOMuU94CNyKYb3UF4qeSc-jzJbWkb-DSO-eJ-yTdPzkKeYG7RYU0tLJTh1JemuimX0qSZaSp5Uxzcm5O-bJSanz-bTVdzAECPIwNUqFlaG80Ft2HyKCCENgo09qkiiOr4i8fWWl42CD9U2HC5UOzRILYmId7gYku6CggFdAxYP9k-e9r3WtRM4KP9aA7DuFPsWfmxsO0-5vzMhlznjUGNzDFzMPYh9RHiXevATiiNK_Eel9juevvIBM9w4TI0scv5r2GxguyJ-MluddCLr3xpyKWQAM2cV2TixIDI5GdnuqDr0488alaFfD2pjgGo9U8D9wfbY7xsci04Yw-8UPkx-ZYHx3ymwTIYDG9WaLMnEuGRRKgzcs7XX5Cn9xz5PxcXvk_5lKsucP55K62eueokV_zechWehm1KxrxONpF_CmufhKrTUEylZTbruAnfn2qSc2XFb9dKpUlssnHoSPH7FDPWyn9l9lpqxmK7Enf1QPeOAyWL0lsBhddn_HyFimyS9HggYlsvRh-HXIe3d7z5GMRc97jY3JwO3q1pp77YKEhz4RY0w2NtSEQfpxcngelRC69zqVkT5S6oBmnEm7IU75RF9HG7nf3aRAV4GKtSmHbb6xx7WhhWnuwhTJw0vKIvrIG7oSPZ4XPhCIUD6mNKvJv22wWdaB4A4xEwTlV78cwn_M825fkYMtJVko-ikYt7DteXovv9H-D9Hm8m_PiE4u_PVALdXKssNRULS69H5YBoLH5ChzRCtSNwSeNO2vauTO6sEORZiC0kKlOAG53slZXD8TjwoX5kruGBeYf1TdeGl8wGSXSpE0z6TOO7QJdXpkO_fY70StEMdQZpwcqw7BYKsUolENLh9vwMi6_Sy_GkmpG3VSpTCwY7ZAhJAjGa7fX9-aNj57mQL3Rm5ZFlhe6sNFqFmtfWhXzAuuHS9k5LleYWAOAqQIvm6jzaKVmvjrKCbEfV46_pERIoh-rwzTT9rW0FdyVd3C2s6VWfAxAKDZ5Y29rc9Uh6Ix7wQCIxJg-JL6LDceicw2_229xBR4bZo5YzYjlX4MzECS9NRxzObm6DinoTxYnqhac4uJXWXacwkWOOcHLYfolMmDlSq7aCvNElrBoFqqJi6xHAMkSgVLmRCwDBS-qQe4hSNtNaoBUJ4bL6OIRbVOtg3F349wXqmVcTOpvOxGxmujdyIj8F_m7meO0NaJ6vkjVPchf9aCixHXrtiIv7ubHmOlpi15DtUH-cQgNm0Wyjb09rx-bXWIqc1YtbLQWpfNTFwN6BJ9N1vNJKkYVsGyk0S-n4fzx2_7BpY4OnatN4bY-SW5c_liP0-LDzqMQInsebdGUzQykowQ-xMV_PNZwyrkQ2XLi3_AaROBC8IrSHwoBGR_BD9JgfIf8JsIf1CiBQcmxKChLRDpVuBHuILz_2itbu37ul5yf-qgZmdoJZNAw1tmBxvYrOig43seqbf0eF3WG8l-idR34x0tFZThetw","subscription":"a6b6cf3e-5544-496b-9bf3-79b7f65fa9b6","appService":"/subscriptions/a6b6cf3e-5544-496b-9bf3-79b7f65fa9b6/resourceGroups/CodeOnTimeGroup/providers/Microsoft.Web/sites/cotdemo","productionUrl":"https://cotdemo.azurewebsites.net","stagingUrl":null,"privateUrl":null,"deleteStaging":true,"overrideUrl":"","lastDeployMode":"production","previewUrl":"https://cotdemo.azurewebsites.net"}</azure>
+  </publish>
+</project>

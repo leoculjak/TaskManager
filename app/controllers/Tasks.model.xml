@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Tasks" alias="Tasks" created="2024-03-18T21:31:19" modified="2024-03-19T13:28:48" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Location" parentTableSchema="dbo" parentTableName="Locations" x="539" y="80">
+      <foreignKeyColumn columnName="LocationId" parentColumnName="Id" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="Id" fieldName="ID" label="Id" />
+    <column name="Description" fieldName="Description" label="Description" />
+    <column name="Date" fieldName="Date" label="Date" format="g" />
+    <column name="Created" fieldName="Created" label="Created" format="g" />
+    <column name="Completed" fieldName="Completed" label="Completed" format="g" />
+    <column name="LocationId" fieldName="LocationId" label="Location Id" aliasColumnName="Name" aliasForeignKey="Location" />
+    <column name="Name" fieldName="LocationName" label="Location Name" foreignKey="Location" />
+    <column name="Address" fieldName="LocationAddress" label="Location Address" foreignKey="Location" />
+    <column name="City" fieldName="LocationCity" label="Location City" foreignKey="Location" />
+    <column name="State" fieldName="LocationState" label="Location State" foreignKey="Location" />
+    <column name="Zip" fieldName="LocationZip" label="Location Zip" foreignKey="Location" />
+    <column name="Country" fieldName="LocationCountry" label="Location Country" foreignKey="Location" />
+    <column name="Creator" fieldName="Creator" label="Creator" />
+    <column name="Owner" fieldName="Owner" label="Owner" />
+    <column name="Status" fieldName="Status" label="Status" />
+  </columns>
+</dataModel>

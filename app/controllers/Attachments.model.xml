@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Attachments" alias="Attachments" created="2024-03-18T23:27:31" modified="2024-03-18T23:27:33" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Task" parentTableSchema="dbo" parentTableName="Tasks" x="307" y="20">
+      <foreignKeyColumn columnName="TaskId" parentColumnName="Id" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="Id" fieldName="ID" label="Id" />
+    <column name="TaskId" fieldName="TaskID" label="Task Id" aliasColumnName="Description" aliasForeignKey="Task" />
+    <column name="Description" fieldName="TaskDescription" label="Task Description" foreignKey="Task" />
+    <column name="FileName" fieldName="FileName" label="File Name" />
+    <column name="ContentType" fieldName="ContentType" label="Content Type" />
+    <column name="Length" fieldName="Length" label="Length" />
+  </columns>
+</dataModel>
