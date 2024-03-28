@@ -1,4 +1,4 @@
-namespace MyCompany.Handlers
+﻿namespace FreeTrial.Handlers
 {
 
 
