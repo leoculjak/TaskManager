@@ -35,6 +35,9 @@ order by "Task"."Date" desc]]></text>
     </field>
     <field name="TaskDescription" type="String" readOnly="true" label="Task" length="50" />
     <field name="TaskDate" type="DateTime" readOnly="true" dataFormatString="g" label="Date" />
+    <field name="PriceInEuro" type="Decimal" readOnly="true" label="Price In Euro" computed="true">
+      <formula>Expenses.Price * 0.9</formula>
+    </field>
   </fields>
   <views>
     <view id="grid1" type="Grid" commandId="command1" label="Expenses" sortExpression="TaskDate desc">
@@ -80,6 +83,17 @@ order by "Task"."Date" desc]]></text>
         </category>
       </categories>
     </view>
+    <view id="exportGrid" commandId="command1" type="Grid" label="Export Expenses Details" showInSelector="false">
+      <dataFields>
+        <dataField fieldName="Item" />
+        <dataField fieldName="Price" columns="15" aggregate="Average" />
+        <dataField fieldName="Quantity" columns="15" aggregate="Sum" />
+        <dataField fieldName="TotalPrice" columns="15" aggregate="Sum" />
+        <dataField fieldName="TaskID" aliasFieldName="TaskDescription" />
+        <dataField fieldName="TaskDate" columns="20" />
+        <dataField fieldName="PriceInEuro" columns="15" />
+      </dataFields>
+    </view>
   </views>
   <actions>
     <actionGroup id="ag1" scope="Grid">
@@ -112,7 +126,7 @@ order by "Task"."Date" desc]]></text>
       <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
     </actionGroup>
     <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
-      <action id="a1" commandName="ExportCsv" />
+      <action id="a1" commandName="ExportCsv" commandArgument="exportGrid" />
       <action id="a2" />
       <action id="a3" commandName="ExportRowset" />
       <action id="a4" commandName="ExportRss" />

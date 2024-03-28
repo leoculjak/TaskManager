@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<dataModel baseSchema="dbo" baseTable="Locations" alias="Locations" created="2024-03-18T23:17:44" modified="2024-03-18T23:18:11" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
-  <foreignKeys />
+<dataModel baseSchema="dbo" baseTable="Locations" alias="Locations" created="2024-03-18T23:17:44" modified="2024-03-26T12:29:08" x="20" y="38" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="Cities" parentTableSchema="dbo" parentTableName="Cities" x="351" y="20">
+      <foreignKeyColumn columnName="CountryId" parentColumnName="Id" />
+    </foreignKey>
+    <foreignKey id="State" parentTableSchema="dbo" parentTableName="States" x="343" y="167">
+      <foreignKeyColumn columnName="StateId" parentColumnName="Id" />
+    </foreignKey>
+  </foreignKeys>
   <columns>
     <column name="Id" fieldName="ID" label="Id" />
     <column name="Name" fieldName="Name" label="Name" />
@@ -9,5 +16,9 @@
     <column name="State" fieldName="State" label="State" />
     <column name="Zip" fieldName="Zip" label="Zip" />
     <column name="Country" fieldName="Country" label="Country" />
+    <column name="CountryId" fieldName="CountryId" label="Country Id" aliasColumnName="Name" aliasForeignKey="Cities" />
+    <column name="Name" fieldName="CountryName" label="Country Name" foreignKey="Cities" />
+    <column name="StateId" fieldName="StateId" label="State Id" aliasColumnName="Name" aliasForeignKey="State" />
+    <column name="Name" fieldName="StateName" label="State Name" foreignKey="State" />
   </columns>
 </dataModel>

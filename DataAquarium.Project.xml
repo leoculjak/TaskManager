@@ -2,14 +2,14 @@
   This file is provided to store the settings for your Data Aquarium project. 
   You can safely delete this file if no further code generation is planned.
 -->
-<project compatibility="20111118" dataModel="required" appFolder="app" displayName="TaskManager" group="" type="Web Site Factory" sourceControl="git" subscriptionLevel="Enterprise" name="TaskManager" prettyName="Task Manager" appGenVersion="8.9.39.0" codeDomProvider="CSharp" targetFramework="4.7.2" userInterface="TouchUI" pageImplementation="html" databaseChanged="true" xmlns="urn:schemas-codeontime-com:data-aquarium-project">
+<project compatibility="20111118" dataModel="required" appFolder="app" displayName="TaskManager" group="" type="Web Site Factory" sourceControl="git" subscriptionLevel="Unlimited" name="TaskManager" prettyName="Task Manager" appGenVersion="8.9.39.0" codeDomProvider="CSharp" targetFramework="4.7.2" userInterface="TouchUI" pageImplementation="html" databaseChanged="true" xmlns="urn:schemas-codeontime-com:data-aquarium-project">
   <connectionString hostDatabaseSharing="false" sessionStateMode="None">Data Source=localhost;Initial Catalog=CotToDoApp;Persist Security Info=True;User ID=sa;Password=QWEasd123!;</connectionString>
   <providerName>System.Data.SqlClient</providerName>
-  <namespace>FreeTrial</namespace>
+  <namespace>MyCompany</namespace>
   <webServer run="true" port="39261" preview="Browser" client="">
     <webConfig></webConfig>
   </webServer>
-  <features useSaveAndNew="true" pageHeader="Task Manager" copyright="" annotations="false" annotationsPath="" newColumn="true" floating="false" maxGridFields="100" multiSelect="false" batchEdit="false" advancedSearch="false" advancedLookup="false" relationshipExplorer="false" enablePermalinks="false" enableHistory="false" enableTransactions="false" showModalForms="true" tabViewSelection="0">
+  <features useSaveAndNew="true" pageHeader="Task Manager" copyright="" annotations="false" annotationsPath="" newColumn="true" floating="false" maxGridFields="100" multiSelect="false" batchEdit="false" advancedSearch="false" advancedLookup="false" relationshipExplorer="false" enablePermalinks="false" enableHistory="false" enableTransactions="false" showModalForms="true" tabViewSelection="10">
     <navigation detectUnderscoreSeparatedSchema="" />
     <blob allowUploadOnInsert="true" />
     <framework scriptOnly="true" useExtenders="false" />
@@ -17,7 +17,8 @@
     <touch desktopDisplayDensity="Condensed" mobileDisplayDensity="Auto" transitions="" sidebar="Landscape" labelsInList="DisplayedBelow" initialListMode="SeeAll" menu="toolbar" promoteActions="true" smartDates="true" mapApiIdentifier="" mapApiIdentifierMobile="" />
     <cms searchEngine="" analysisEngine="" analysisOnDataPages="false" />
     <ease urlHashing="false">
-      <auditing></auditing>
+      <auditing>Created By User ID       = CreatedBy
+Created On Date           = CreatedOn</auditing>
     </ease>
     <packageProperties></packageProperties>
     <smtp deliveryMethod="Network" deliveryFormat="" from="" clientDomain="" targetName="" host="" port="" defaultCredentials="true" enableSsl="false" username="" password="" />
@@ -26,16 +27,31 @@
   <reports enabled="true" version="15" />
   <host path="" url="" />
   <databaseObjectFilter generate="ControllersAndPages"></databaseObjectFilter>
-  <bll normalizeModelNames="true" discoveryDepth="3" labelFormatExpression="" selectMethod="Select" selectSingleMethod="SelectSingle" insertMethod="Insert" updateMethod="Update" deleteMethod="Delete" generateSharedBusinessRules="false" includeViews="true" tabViewSelection="0">
+  <bll normalizeModelNames="true" discoveryDepth="3" labelFormatExpression="" selectMethod="Select" selectSingleMethod="SelectSingle" insertMethod="Insert" updateMethod="Update" deleteMethod="Delete" generateSharedBusinessRules="true" includeViews="true" tabViewSelection="0">
     <fieldMap></fieldMap>
     <keys></keys>
     <fieldsToIgnore></fieldsToIgnore>
     <fieldsToHide></fieldsToHide>
     <customLabels></customLabels>
   </bll>
-  <membership enabled="true" providerName="System.Data.SqlClient" connectionString="" windowsAuthentication="false" activeDirectory="false" customSecurity="false" dedicatedLogin="false" displayRememberMe="true" rememberMeSet="false" displaySignUp="true" displayPasswordRecovery="true" displayMyAccount="true" displayHelp="true" idleUserDetectionTimeout="-1" tabViewSelection="0" validationKey="AA7E96D222AB95A6B058D5ED5E359D6D990D24313DDB74C4CCD255D5967B539AE3137D329FBAEBCCB6792B5EF3F02A9377A7EC57631D97881DE2C496617A4871">
+  <membership enabled="false" providerName="System.Data.SqlClient" connectionString="" windowsAuthentication="false" activeDirectory="false" customSecurity="true" dedicatedLogin="false" displayRememberMe="true" rememberMeSet="false" displaySignUp="false" displayPasswordRecovery="false" displayMyAccount="true" displayHelp="true" idleUserDetectionTimeout="-1" tabViewSelection="0" validationKey="AA7E96D222AB95A6B058D5ED5E359D6D990D24313DDB74C4CCD255D5967B539AE3137D329FBAEBCCB6792B5EF3F02A9377A7EC57631D97881DE2C496617A4871">
     <adConfig></adConfig>
-    <config></config>
+    <config>table Users = Users
+column [int|uiid] UserID = Id
+column [text] UserName = UserName
+column [text] Password = Password
+column [text] Email = Email
+
+table Roles = Roles
+column [int|uiid] RoleID = Id
+column [text] RoleName = Name
+
+table UserRoles = UserRoles
+column [int|uiid] UserID = UserID
+column [int|uiid] RoleID = RoleID
+
+option Min Required Nonalphanumeric Characters = 0
+option Min Required Password Length = 3</config>
   </membership>
   <globalization uiCulture="en-US" culture="en-150" enableClientBasedCulture="false" supportedCultures="en-150,en-US; " googleTranslateApiKey="" />
   <layout name="Classic" menuStyle="MultiLevel" />

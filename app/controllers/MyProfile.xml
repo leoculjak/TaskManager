@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<dataController name="MyProfile" conflictDetection="overwriteChanges" label="My Profile" handler="FreeTrial.Rules.MyProfileBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
+<dataController name="MyProfile" conflictDetection="overwriteChanges" label="My Profile" handler="MyCompany.Rules.MyProfileBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
   <commands />
   <fields>
     <field name="UserName" type="String" allowNulls="false" label="^UserName^User Name^UserName^" />
@@ -143,6 +143,15 @@
         </category>
       </categories>
     </view>
+    <view id="agreeForm" type="Form" label="Agree Form" showInSelector="false">
+      <categories>
+        <category id="c1" headerText="My Profile" flow="NewColumn">
+          <dataFields>
+            <dataField fieldName="UserName" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
   </views>
   <actions>
     <actionGroup id="ag1" scope="Form">
@@ -156,8 +165,6 @@
       <action id="a8" whenLastCommandName="Edit" whenLastCommandArgument="myAccountForm" commandName="Update" headerText="^UpdateMyAccountActionHeaderText^Update My Account^UpdateMyAccountActionHeaderText^" causesValidation="false" />
       <action id="a9" whenLastCommandName="Edit" whenLastCommandArgument="myAccountForm" commandName="Cancel" />
       <action id="a10" commandName="Custom" headerText="^LoginButton^Login^LoginButton^" commandArgument="Login" whenLastCommandName="New" whenLastCommandArgument="loginForm" causesValidation="true" key="Enter" cssClass="material-icon-arrow-forward" />
-      <action id="a11" commandName="Custom" headerText="^SignUpNow^Sign up now^SignUpNow^" commandArgument="SignUp" whenLastCommandName="New" whenLastCommandArgument="loginForm" causesValidation="false" />
-      <action id="a12" commandName="Custom" headerText="^ForgotYourPassword^Forgot your password?^ForgotYourPassword^" commandArgument="ForgotPassword" whenLastCommandName="New" whenLastCommandArgument="loginForm" causesValidation="false" />
     </actionGroup>
   </actions>
   <businessRules>
@@ -206,5 +213,8 @@ $app.touch.show({
 });
 
 									]]></rule>
+    <rule id="r103" commandName="Custom" commandArgument="Agree" view="agreeForm" type="Sql" phase="Execute"><![CDATA[update Users
+set EulaAcceptedOn = GETDATE()
+where UserName = @UserName]]></rule>
   </businessRules>
 </dataController>
