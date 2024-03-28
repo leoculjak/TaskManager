@@ -11,13 +11,7 @@ select
 	,"Locations"."State" "State"
 	,"Locations"."Zip" "Zip"
 	,"Locations"."Country" "Country"
-	,"Locations"."CountryId" "CountryId"
-	,"Cities"."Name" "CountryName"
-	,"Locations"."StateId" "StateId"
-	,"State"."Name" "StateName"
 from "dbo"."Locations" "Locations"
-	left join "dbo"."Cities" "Cities" on "Locations"."CountryId" = "Cities"."Id"
-	left join "dbo"."States" "State" on "Locations"."StateId" = "State"."Id"
 ]]></text>
     </command>
     <command id="IdIdentityCommand" type="Text" event="Inserted">
@@ -35,14 +29,6 @@ from "dbo"."Locations" "Locations"
     <field name="State" type="String" label="State" length="100" showInSummary="true" />
     <field name="Zip" type="String" label="Zip" length="100" showInSummary="true" />
     <field name="Country" type="String" label="Country" length="100" />
-    <field name="CountryId" type="Int32" label="Country Id" contextFields="StateId=StateId">
-      <items style="ListBox" dataController="Cities" newDataView="createForm1" dataValueField="ID" dataTextField="Name" />
-    </field>
-    <field name="StateId" type="Int32" label="State Id">
-      <items style="Lookup" dataController="States" newDataView="createForm1" dataValueField="ID" dataTextField="Name" />
-    </field>
-    <field name="CountryName" type="String" readOnly="true" label="Country Name" length="128" />
-    <field name="StateName" type="String" readOnly="true" label="State Name" length="128" />
   </fields>
   <views>
     <view id="grid1" type="Grid" commandId="command1" label="Locations">
@@ -54,8 +40,6 @@ from "dbo"."Locations" "Locations"
         <dataField fieldName="State" />
         <dataField fieldName="Zip" />
         <dataField fieldName="Country" />
-        <dataField fieldName="CountryId" aliasFieldName="CountryName" />
-        <dataField fieldName="StateId" aliasFieldName="StateName" />
       </dataFields>
     </view>
     <view id="editForm1" type="Form" commandId="command1" label="Review Locations">
@@ -70,8 +54,6 @@ from "dbo"."Locations" "Locations"
             <dataField fieldName="State" />
             <dataField fieldName="Zip" />
             <dataField fieldName="Country" />
-            <dataField fieldName="CountryId" aliasFieldName="CountryName" />
-            <dataField fieldName="StateId" aliasFieldName="StateName" />
           </dataFields>
         </category>
       </categories>
@@ -88,8 +70,6 @@ from "dbo"."Locations" "Locations"
             <dataField fieldName="State" />
             <dataField fieldName="Zip" />
             <dataField fieldName="Country" />
-            <dataField fieldName="CountryId" aliasFieldName="CountryName" />
-            <dataField fieldName="StateId" aliasFieldName="StateName" />
           </dataFields>
         </category>
       </categories>

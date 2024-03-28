@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Web;
 using Microsoft.Reporting.WebForms;
-using MyCompany.Data;
+using FreeTrial.Data;
 
-namespace MyCompany.Handlers
+namespace FreeTrial.Handlers
 {
     public partial class Report : ReportBase
     {

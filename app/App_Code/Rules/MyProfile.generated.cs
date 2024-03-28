@@ -1,4 +1,4 @@
-namespace MyCompany.Rules
+﻿namespace FreeTrial.Rules
 {
 
 
