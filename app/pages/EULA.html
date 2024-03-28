@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EULA</title>
+  </head>
+  <body data-authorize-roles="*">
+    <!--The contents of this page will be overwritten by app generator. Set page property "Generate" to "First Time Only" to preserve changes.-->
+    <div data-app-role="page" data-content-framework="bootstrap">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 data-editable="true">
+                <i class="material-icon">public</i>End User Licence Agreement..
+            </h1>
+            <p>
+                <a class="btn btn-success btn-agree btn-lg" href="#" data-editable="true">I Agree!</a>
+            </p>
+        </div>
+    </div>
+    <!-- /container -->
+</div>
+      <script>
+          $(document).on('click', '.btn-agree', function () {
+              $app.confirm('Do you agree?').then(function () {
+                  $app.execute({
+                      controller: 'MyProfile',
+                      view: 'agreeForm',
+                      command: 'Custom',
+                      argument: 'Agree',
+                      values: { userName: $app.userName() }
+                  }).then(function (result) {
+                      location.replace(location.href);
+                  });
+              });
+              return false;
+          });
+      </script>
+  </body>
+</html>
