@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<dataController name="Tasks" conflictDetection="overwriteChanges" label="Tasks" xmlns="urn:schemas-codeontime-com:data-aquarium">
+<dataController name="Tasks" conflictDetection="overwriteChanges" label="Tasks" handler="MyCompany.Rules.TasksBusinessRules" xmlns="urn:schemas-codeontime-com:data-aquarium">
   <commands>
     <command id="command1" type="Text">
       <text><![CDATA[
@@ -19,8 +19,15 @@ select
 	,"Tasks"."Creator" "Creator"
 	,"Tasks"."Owner" "Owner"
 	,"Tasks"."Status" "Status"
+	,"Tasks"."CreatedBy" "CreatedBy"
+	,"Tasks"."StartDate" "StartDate"
+	,"Tasks"."EndDate" "EndDate"
+	,"Schedule"."DaysOfWeek" "ScheduleDaysOfWeek"
+	,"Schedule"."Weeks" "ScheduleWeeks"
+	,"Tasks"."ScheduleId" "ScheduleId"
 from "dbo"."Tasks" "Tasks"
 	left join "dbo"."Locations" "Location" on "Tasks"."LocationId" = "Location"."Id"
+	left join "dbo"."Schedules" "Schedule" on "Tasks"."ScheduleId" = "Schedule"."Id"
 ]]></text>
     </command>
     <command id="IdIdentityCommand" type="Text" event="Inserted">
@@ -60,6 +67,24 @@ from "dbo"."Tasks" "Tasks"
         <item value="Completed" text="Completed" />
       </items>
     </field>
+    <field name="CreatedBy" type="Int32" label="Created By" />
+    <field name="StartDate" type="DateTime" dataFormatString="g" label="Start Date" />
+    <field name="EndDate" type="DateTime" dataFormatString="g" label="End Date" />
+    <field name="ScheduleDaysOfWeek" type="String" label="Schedule Days Of Week" length="200" isVirtual="true">
+      <items style="CheckBoxList">
+        <item value="Monday" text="Monday" />
+        <item value="Tuesday" text="Tuesday" />
+        <item value="Wednesday" text="Wednesday" />
+        <item value="Thursday" text="Thursday" />
+        <item value="Friday" text="Friday" />
+        <item value="Saturday" text="Saturday" />
+        <item value="Sunday" text="Sunday" />
+      </items>
+    </field>
+    <field name="ScheduleWeeks" type="Int32" label="Schedule Weeks" isVirtual="true" />
+    <field name="ScheduleId" type="Int32" label="Schedule Id">
+      <items style="Lookup" dataController="Schedules" newDataView="createForm1" dataValueField="ID" dataTextField="ID" copy="ScheduleDaysOfWeek=DaysOfWeek, ScheduleWeeks=Weeks" />
+    </field>
     <field name="Attachments" type="DataView" label="Attachments">
       <dataView controller="Attachments" view="grid1" filterFields="TaskID" />
     </field>
@@ -71,7 +96,7 @@ from "dbo"."Tasks" "Tasks"
     </field>
   </fields>
   <views>
-    <view id="grid1" type="Grid" commandId="command1" label="Active Tasks" sortExpression="Date DESC" filter="Completed is NULL AND (Creator = @BusinessRules_UserName OR Owner = @BusinessRules_UserName)">
+    <view id="grid1" type="Grid" commandId="command1" label="Active Tasks" sortExpression="Date DESC" filter="Completed is NULL AND (Creator = @BusinessRules_UserName OR Owner = @BusinessRules_UserName)" tags="view-style-calendar">
       <headerText>$DefaultGridViewDescription</headerText>
       <dataFields>
         <dataField fieldName="Description" columns="50" />
@@ -82,6 +107,12 @@ from "dbo"."Tasks" "Tasks"
         <dataField fieldName="LocationId" aliasFieldName="LocationName" />
         <dataField fieldName="Creator" />
         <dataField fieldName="Owner" />
+        <dataField fieldName="CreatedBy" columns="15" />
+        <dataField fieldName="StartDate" columns="20" />
+        <dataField fieldName="EndDate" columns="20" />
+        <dataField fieldName="ScheduleDaysOfWeek" />
+        <dataField fieldName="ScheduleWeeks" columns="15" />
+        <dataField fieldName="ScheduleId" columns="15" />
         <dataField fieldName="Attachments" columns="15" />
         <dataField fieldName="Expenses" columns="15" />
         <dataField fieldName="Tags" columns="30" />
@@ -95,6 +126,12 @@ from "dbo"."Tasks" "Tasks"
           <dataFields>
             <dataField fieldName="Description" columns="50" />
             <dataField fieldName="Date" columns="20" />
+            <dataField fieldName="CreatedBy" columns="15" />
+            <dataField fieldName="StartDate" columns="20" />
+            <dataField fieldName="EndDate" columns="20" />
+            <dataField fieldName="ScheduleDaysOfWeek" />
+            <dataField fieldName="ScheduleWeeks" columns="15" />
+            <dataField fieldName="ScheduleId" columns="15" />
           </dataFields>
         </category>
         <category headerText="Details" id="c6" flow="NewColumn">
@@ -152,6 +189,42 @@ from "dbo"."Tasks" "Tasks"
             <dataField fieldName="Creator" />
             <dataField fieldName="Owner" />
             <dataField fieldName="Status" />
+            <dataField fieldName="CreatedBy" columns="15" />
+            <dataField fieldName="StartDate" columns="20" />
+            <dataField fieldName="EndDate" columns="20" />
+            <dataField fieldName="ScheduleId" columns="15" hidden="true" />
+            <dataField fieldName="Attachments" columns="15" />
+            <dataField fieldName="Expenses" columns="15" />
+            <dataField fieldName="Tags" rows="5" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createTask" type="Form" commandId="command1" label="New Tasks">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="Description" columns="50" />
+            <dataField fieldName="Date" columns="20" />
+            <dataField fieldName="Created" columns="20" hidden="true" />
+            <dataField fieldName="Completed" columns="20" hidden="true" />
+            <dataField fieldName="LocationId" aliasFieldName="LocationName" />
+            <dataField fieldName="LocationAddress" />
+            <dataField fieldName="LocationCity" />
+            <dataField fieldName="LocationState" />
+            <dataField fieldName="LocationZip" />
+            <dataField fieldName="LocationCountry" />
+            <dataField fieldName="Creator" />
+            <dataField fieldName="Owner" />
+            <dataField fieldName="Status" />
+            <dataField fieldName="CreatedBy" columns="15" />
+            <dataField fieldName="StartDate" columns="20" />
+            <dataField fieldName="EndDate" columns="20" />
+            <dataField fieldName="ScheduleDaysOfWeek" />
+            <dataField fieldName="ScheduleWeeks" columns="15" />
+            <dataField fieldName="ScheduleId" columns="15" hidden="true" />
             <dataField fieldName="Attachments" columns="15" />
             <dataField fieldName="Expenses" columns="15" />
             <dataField fieldName="Tags" rows="5" />
@@ -170,6 +243,12 @@ from "dbo"."Tasks" "Tasks"
         <dataField fieldName="LocationId" aliasFieldName="LocationName" />
         <dataField fieldName="Creator" />
         <dataField fieldName="Owner" />
+        <dataField fieldName="CreatedBy" columns="15" />
+        <dataField fieldName="StartDate" columns="20" />
+        <dataField fieldName="EndDate" columns="20" />
+        <dataField fieldName="ScheduleDaysOfWeek" />
+        <dataField fieldName="ScheduleWeeks" columns="15" />
+        <dataField fieldName="ScheduleId" columns="15" />
         <dataField fieldName="Attachments" columns="15" />
         <dataField fieldName="Expenses" columns="15" />
         <dataField fieldName="Tags" columns="30" />
@@ -203,6 +282,7 @@ from "dbo"."Tasks" "Tasks"
     </actionGroup>
     <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
       <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+      <action commandName="New" commandArgument="createTask" headerText="New Recurring Meeting" id="a100" />
     </actionGroup>
     <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
       <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
@@ -257,6 +337,20 @@ IF (@Owner IS NULL)
 	SET @Owner = @BusinessRules_UserName
 ELSE
 	SET @Status = 'Delegated']]></rule>
+    <rule id="r104" commandName="New" type="JavaScript" phase="After"><![CDATA[$row.Description = 'NewTask';
+
+if(!$row.StartDate){
+  var start = new Date();
+  start.setMinutes(0,0,0);
+  start.setHours(start.getHours() + 1);
+  
+  var end = new Date(start);
+  end.setHours(end.getHours() + 1);
+  
+  $row.StartDate = start;
+  $row.EndDate = end;
+}]]></rule>
+    <rule id="r105" commandName="Insert" type="Code" phase="Before" />
   </businessRules>
   <statusBar><![CDATA[Status: New
 [New] > In-Progress > Done >
